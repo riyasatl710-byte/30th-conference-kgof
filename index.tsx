@@ -3,11 +3,14 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 
-const startApp = () => {
-  const rootElement = document.getElementById('root');
-  if (!rootElement) return;
-
-  const root = createRoot(rootElement);
+const init = () => {
+  const container = document.getElementById('root');
+  if (!container) return;
+  
+  // Clear the fallback loader
+  container.innerHTML = ''; 
+  
+  const root = createRoot(container);
   root.render(
     <React.StrictMode>
       <App />
@@ -15,9 +18,9 @@ const startApp = () => {
   );
 };
 
-// Ensure DOM is ready before starting
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', startApp);
+// Vercel friendly execution
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  init();
 } else {
-  startApp();
+  document.addEventListener('DOMContentLoaded', init);
 }

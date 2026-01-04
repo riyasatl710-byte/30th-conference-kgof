@@ -170,4 +170,21 @@ export const Home: React.FC<HomeProps> = ({ onPageChange }) => {
            ))}
            <div className="absolute inset-0 bg-red-900/[0.02] pointer-events-none" />
            
-           {ABOUT_CAROUSE
+           {ABOUT_CAROUSEL_IMAGES.length > 1 && (
+             <div className="absolute bottom-6 flex space-x-2 z-10">
+               {ABOUT_CAROUSEL_IMAGES.map((_, idx) => (
+                 <button 
+                   key={idx}
+                   onClick={() => setActiveAbout(idx)}
+                   className={`h-1.5 rounded-full transition-all duration-500 shadow-sm ${
+                     activeAbout === idx ? 'w-8 bg-red-600' : 'w-2 bg-gray-300 hover:bg-gray-400'
+                   }`}
+                 />
+               ))}
+             </div>
+           )}
+        </div>
+      </section>
+    </div>
+  );
+};
