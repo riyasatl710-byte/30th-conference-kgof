@@ -1,23 +1,13 @@
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
+import App from './App'
+import './index.css'
 
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import App from './App.tsx';
-
-const startApp = () => {
-  const rootElement = document.getElementById('root');
-  if (!rootElement) return;
-
-  const root = createRoot(rootElement);
-  root.render(
-    <React.StrictMode>
+createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <BrowserRouter basename="/30th-conference-kgof">
       <App />
-    </React.StrictMode>
-  );
-};
-
-// Ensure DOM is ready before starting
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', startApp);
-} else {
-  startApp();
-}
+    </BrowserRouter>
+  </React.StrictMode>
+)
