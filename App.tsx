@@ -57,11 +57,11 @@ const App: React.FC = () => {
       
       try {
         const url = new URL(window.location.href);
-        // Only update history if not in a blob/special environment
-        if (url.protocol.startsWith('http')) {
-          url.searchParams.set('page', page);
-          window.history.pushState({}, '', url.toString());
-        }
+        url.searchParams.set('page', page);
+        
+        // Push relative search params to keep the URL clean on GitHub Pages subfolders
+        const relativeUrl = '?' + url.searchParams.toString();
+        window.history.pushState({}, '', relativeUrl);
       } catch (e) {
         console.warn("Navigation: URL update skipped.");
       }

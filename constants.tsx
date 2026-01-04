@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Page, Speaker, ScheduleItem, PressRelease, AdminStats } from './types.ts';
 
@@ -31,10 +30,11 @@ export const CONFERENCE_INFO = {
   organization: "KERALA GAZETTED OFFICERS FEDERATION (KGOF)",
 };
 
-// Fix: Add HERO_CAROUSEL_IMAGES to resolve error in Home.tsx
+// 3 Images: 2 Awesome backgrounds + 1 Logo Only
 export const HERO_CAROUSEL_IMAGES = [
-  "https://drive.google.com/thumbnail?id=1_SvI_2rlQrRPo3jVsecWObepcqPm1JfH&sz=w1200",
-  "https://drive.google.com/thumbnail?id=1Yl8o5Rn915JteROgfmv2LKubqHgX3Vob&sz=w1200"
+  "https://images.unsplash.com/photo-1540575861501-7c001173a271?auto=format&fit=crop&w=1600&q=80",
+  "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1600&q=80",
+  "https://drive.google.com/thumbnail?id=1Yl8o5Rn915JteROgfmv2LKubqHgX3Vob&sz=w1000"
 ];
 
 export const ABOUT_CAROUSEL_IMAGES = [
@@ -123,7 +123,6 @@ export const MOCK_SPEAKERS: Speaker[] = [
   }
 ];
 
-// Fix: Complete the MOCK_SCHEDULE to resolve missing speaker and venue properties error
 export const MOCK_SCHEDULE: ScheduleItem[] = [
   { date: 'Jan 09', time: '11:00 AM', event: 'സംസ്ഥാന കമ്മിറ്റി യോഗം', speaker: 'കമ്മിറ്റി അംഗങ്ങൾ', speakerDesignation: 'കെ.ജി.ഒ.എഫ്', venue: 'Dinesh Auditorium' },
   { date: 'Jan 09', time: '02:00 PM', event: 'സംസ്ഥാന കൗൺസിൽ യോഗം', speaker: 'കൗൺസിൽ അംഗങ്ങൾ', speakerDesignation: 'കെ.ജി.ഒ.എഫ്', venue: 'Dinesh Auditorium' },
@@ -133,7 +132,6 @@ export const MOCK_SCHEDULE: ScheduleItem[] = [
   { date: 'Jan 11', time: '10:00 AM', event: 'യാത്രയയപ്പ് സമ്മേളനം', speaker: 'നേതാക്കൾ', speakerDesignation: 'കെ.ജി.ഒ.എഫ്', venue: 'Dinesh Auditorium' }
 ];
 
-// Fix: Add MOCK_PRESS_RELEASES to resolve missing export error in PressReleases.tsx
 export const MOCK_PRESS_RELEASES: PressRelease[] = [
   {
     date: 'Dec 15, 2025',

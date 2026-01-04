@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Page } from '../../types.ts';
 import { CONFERENCE_INFO, HERO_CAROUSEL_IMAGES, ABOUT_CAROUSEL_IMAGES } from '../../constants.tsx';
@@ -40,17 +39,29 @@ export const Home: React.FC<HomeProps> = ({ onPageChange }) => {
       {/* Hero Section */}
       <section className="relative w-full min-h-[550px] md:min-h-[650px] overflow-hidden rounded-[2.5rem] shadow-2xl bg-red-950">
         <div className="absolute inset-0">
-          {HERO_CAROUSEL_IMAGES.map((img, idx) => (
-            <img
-              key={idx}
-              src={img}
-              alt={`Slide ${idx + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                activeHero === idx ? 'opacity-40' : 'opacity-0'
-              }`}
-            />
-          ))}
-          <div className="absolute inset-0 bg-gradient-to-t from-red-950/90 via-black/20 to-transparent" />
+          {HERO_CAROUSEL_IMAGES.map((img, idx) => {
+            const isLogoSlide = idx === 2; // The 3rd slide is the logo only
+            return (
+              <div 
+                key={idx}
+                className={`absolute inset-0 transition-opacity duration-1000 ${
+                  activeHero === idx ? 'opacity-100' : 'opacity-0'
+                }`}
+              >
+                {isLogoSlide && (
+                  <div className="absolute inset-0 bg-red-900/20 blur-3xl scale-75 opacity-50 rounded-full flex items-center justify-center" />
+                )}
+                <img
+                  src={img}
+                  alt={`Slide ${idx + 1}`}
+                  className={`w-full h-full ${
+                    isLogoSlide ? 'object-contain p-12 md:p-24' : 'object-cover opacity-40'
+                  } transition-transform duration-[6000ms] ${activeHero === idx ? 'scale-110' : 'scale-100'}`}
+                />
+              </div>
+            );
+          })}
+          <div className="absolute inset-0 bg-gradient-to-t from-red-950/90 via-black/10 to-transparent" />
         </div>
 
         <div className="relative h-full z-10 flex items-center p-6 md:p-16">
@@ -82,7 +93,7 @@ export const Home: React.FC<HomeProps> = ({ onPageChange }) => {
                 onClick={() => onPageChange(Page.Registration)}
                 className="tap-feedback px-10 py-4.5 bg-red-600 hover:bg-red-700 text-white font-black rounded-2xl shadow-2xl transition-all text-base uppercase tracking-widest border-b-4 border-red-800"
               >
-                Deligate Check-In
+                Delegate Check-In
               </button>
               <button 
                 onClick={() => onPageChange(Page.Schedule)}
@@ -107,7 +118,7 @@ export const Home: React.FC<HomeProps> = ({ onPageChange }) => {
         </div>
       </section>
 
-      {/* About Section with Secondary Carousel */}
+      {/* About Section */}
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center px-4 py-8">
         <div className="space-y-6">
           <div className="inline-block px-3 py-1 bg-red-50 text-red-600 rounded-md text-[10px] font-black uppercase tracking-widest">
@@ -136,7 +147,7 @@ export const Home: React.FC<HomeProps> = ({ onPageChange }) => {
           </div>
         </div>
 
-        {/* Optimized Image Carousel Container for Posters */}
+        {/* Poster Carousel */}
         <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-[6px] md:border-[12px] border-white group bg-[#fdfaf8] aspect-[4/5] sm:aspect-[4/3] flex items-center justify-center">
            {ABOUT_CAROUSEL_IMAGES.map((img, idx) => (
              <img 
@@ -153,7 +164,6 @@ export const Home: React.FC<HomeProps> = ({ onPageChange }) => {
            ))}
            <div className="absolute inset-0 bg-red-900/[0.02] pointer-events-none" />
            
-           {/* Navigation Dots for About Section */}
            {ABOUT_CAROUSEL_IMAGES.length > 1 && (
              <div className="absolute bottom-6 flex space-x-2 z-10">
                {ABOUT_CAROUSEL_IMAGES.map((_, idx) => (
@@ -163,7 +173,6 @@ export const Home: React.FC<HomeProps> = ({ onPageChange }) => {
                    className={`h-1.5 rounded-full transition-all duration-500 shadow-sm ${
                      activeAbout === idx ? 'w-8 bg-red-600' : 'w-2 bg-gray-300 hover:bg-gray-400'
                    }`}
-                   aria-label={`Go to slide ${idx + 1}`}
                  />
                ))}
              </div>
