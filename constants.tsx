@@ -61,7 +61,7 @@ export const MOCK_SPEAKERS: Speaker[] = [
   { 
     id: '1', 
     name: 'Com. Binoy Viswam', 
-    designation: 'CPI Secretary, Kerala', 
+    designation: 'Secretary, CPI, Kerala', 
     bio: 'Member of Parliament (Rajya Sabha) and a prominent national leader of the Communist Party of India.', 
     photoUrl: 'https://drive.google.com/thumbnail?id=1lP-8R0f1jikUjWppXPTTrfuGsE8PjwCt&sz=w800' 
   },
@@ -83,21 +83,21 @@ export const MOCK_SPEAKERS: Speaker[] = [
     id: '4', 
     name: 'Smt. J. Chinchurani', 
     designation: 'Animal Husbandry Minister, Kerala', 
-    bio: 'The first female minister from CPI in Kerala.', 
+    bio: 'Minister for Animal Husbandry & Dairy Development.', 
     photoUrl: 'https://drive.google.com/thumbnail?id=1Ap4biDu8zYcsKmgL1YFR2SVO-92IsqGy&sz=w800' 
   },
   { 
     id: '5', 
     name: 'Sri. P. Prasad', 
     designation: 'Agriculture Minister, Kerala', 
-    bio: 'Minister for Agriculture and Farmers Welfare.', 
+    bio: 'Minister for Agriculture, Kerala.', 
     photoUrl: 'https://drive.google.com/thumbnail?id=1nEocCUr02Z9YT13Rvye_wRQc9l0NrB4J&sz=w800' 
   },
   { 
     id: '6', 
     name: 'Com. K. P. Rajendran', 
     designation: 'National Executive Member, CPI', 
-    bio: 'Former Minister for Revenue in Kerala and senior leader.', 
+    bio: 'Member, CPI National Executive.', 
     photoUrl: 'https://drive.google.com/thumbnail?id=19nU5pSJLdFu0Qboc6qWepBQV1xn4F_nM&sz=w800' 
   },
   { 
