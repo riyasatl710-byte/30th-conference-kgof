@@ -4,6 +4,7 @@ import { MOCK_SPEAKERS } from '../../constants.tsx';
 
 export const Speakers: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<'All' | 'Ministers' | 'Leaders'>('All');
+  const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
 
   const filteredSpeakers = MOCK_SPEAKERS.filter(s => {
     if (activeFilter === 'All') return true;
@@ -11,6 +12,10 @@ export const Speakers: React.FC = () => {
     if (activeFilter === 'Leaders') return !s.designation.toLowerCase().includes('minister');
     return true;
   });
+
+  const handleImageError = (id: string) => {
+    setFailedImages(prev => ({ ...prev, [id]: true }));
+  };
 
   return (
     <div className="space-y-12 fade-in">
@@ -46,12 +51,20 @@ export const Speakers: React.FC = () => {
             key={speaker.id} 
             className="group bg-white rounded-[2.5rem] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-50 flex flex-col"
           >
-            <div className="relative h-72 overflow-hidden bg-gray-100">
-              <img 
-                src={speaker.photoUrl} 
-                alt={speaker.name}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
+            <div className="relative h-72 overflow-hidden bg-gray-50">
+              {!failedImages[speaker.id] ? (
+                <img 
+                  src={speaker.photoUrl} 
+                  alt={speaker.name}
+                  onError={() => handleImageError(speaker.id)}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+              ) : (
+                <div className="w-full h-full flex flex-col items-center justify-center bg-red-50 text-red-200">
+                  <span className="text-6xl font-black opacity-20">{speaker.name.charAt(0)}</span>
+                  <span className="text-[10px] font-black uppercase tracking-widest mt-4 opacity-40">Photo Missing</span>
+                </div>
+              )}
               <div className="absolute inset-0 bg-gradient-to-t from-red-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="absolute bottom-4 left-4 right-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all">
                 <div className="bg-white/10 backdrop-blur-md border border-white/20 p-3 rounded-2xl">
