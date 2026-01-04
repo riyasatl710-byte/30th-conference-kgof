@@ -20,7 +20,7 @@ const App: React.FC = () => {
   const [transImgError, setTransImgError] = useState(false);
 
   useEffect(() => {
-    // Check URL for initial page
+    // Check URL for initial page via search param (most stable for GH Pages)
     const params = new URLSearchParams(window.location.search);
     const pageParam = params.get('page') as Page;
     if (pageParam && Object.values(Page).includes(pageParam)) {
@@ -56,14 +56,11 @@ const App: React.FC = () => {
       setCurrentPage(page);
       
       try {
-        const url = new URL(window.location.href);
-        url.searchParams.set('page', page);
-        
-        // Push relative search params to keep the URL clean on GitHub Pages subfolders
-        const relativeUrl = '?' + url.searchParams.toString();
-        window.history.pushState({}, '', relativeUrl);
+        // Use relative search params only. This is the "magic bullet" for GitHub Pages.
+        const newUrl = `?page=${page}`;
+        window.history.pushState({}, '', newUrl);
       } catch (e) {
-        console.warn("Navigation: URL update skipped.");
+        console.warn("Navigation: URL update failed, staying on current path.");
       }
 
       window.scrollTo({ top: 0, behavior: 'instant' });

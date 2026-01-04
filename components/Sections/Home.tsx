@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Page } from '../../types.ts';
 import { CONFERENCE_INFO, HERO_CAROUSEL_IMAGES, ABOUT_CAROUSEL_IMAGES } from '../../constants.tsx';
@@ -49,13 +50,13 @@ export const Home: React.FC<HomeProps> = ({ onPageChange }) => {
                 }`}
               >
                 {isLogoSlide && (
-                  <div className="absolute inset-0 bg-red-900/20 blur-3xl scale-75 opacity-50 rounded-full flex items-center justify-center" />
+                  <div className="absolute inset-0 bg-red-900/20 blur-3xl scale-75 opacity-40 rounded-full flex items-center justify-center" />
                 )}
                 <img
                   src={img}
                   alt={`Slide ${idx + 1}`}
                   className={`w-full h-full ${
-                    isLogoSlide ? 'object-contain p-12 md:p-24' : 'object-cover opacity-40'
+                    isLogoSlide ? 'object-contain p-16 md:p-32' : 'object-cover opacity-40'
                   } transition-transform duration-[6000ms] ${activeHero === idx ? 'scale-110' : 'scale-100'}`}
                 />
               </div>
