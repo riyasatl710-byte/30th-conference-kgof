@@ -31,7 +31,7 @@ export const CONFERENCE_INFO = {
   organization: "KERALA GAZETTED OFFICERS FEDERATION (KGOF)",
 };
 
-// 3 Images: 2 Backgrounds + 1 Logo
+// 3 Slide Setup: Background, Background, Logo Only
 export const HERO_CAROUSEL_IMAGES = [
   "https://images.unsplash.com/photo-1540575861501-7c001173a271?auto=format&fit=crop&w=1600&q=80",
   "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1600&q=80",

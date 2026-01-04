@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>KGOF 30th State Conference 2026</title>
     
-    <!-- GitHub Pages Subfolder Support -->
-    <base href="/30th-conference-kgof/">
-    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,11 +19,6 @@
         font-family: 'Poppins', sans-serif;
       }
       
-      button, a, [role="button"] {
-        touch-action: manipulation;
-        user-select: none;
-      }
-
       .fade-in { animation: fadeIn 0.4s ease-out forwards; }
       @keyframes fadeIn {
         from { opacity: 0; transform: translateY(10px); }
@@ -41,11 +33,6 @@
         100% { transform: scale(1); opacity: 1; }
       }
 
-      .tap-feedback:active {
-        transform: scale(0.96);
-        transition: transform 0.1s ease;
-      }
-
       @keyframes loading {
         0% { transform: translateX(-100%); }
         100% { transform: translateX(250%); }
@@ -55,7 +42,6 @@
         text-shadow: 0 4px 12px rgba(0,0,0,0.5);
       }
 
-      /* Critical Transition Overlay CSS */
       .page-transition-overlay {
         position: fixed;
         inset: 0;
@@ -95,10 +81,22 @@
     }
     </script>
   </head>
-  <body class="bg-gray-50 text-gray-900 overflow-x-hidden selection:bg-red-100">
+  <body class="bg-gray-50 text-gray-900 overflow-x-hidden">
     <div id="root"></div>
-    <!-- Babel standalone allows us to run TSX directly in the browser -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script type="text/babel" data-type="module" src="index.tsx"></script>
+    <!-- We add data-presets to ensure Babel handles JSX and TS syntax correctly in the browser -->
+    <script 
+      type="text/babel" 
+      data-type="module" 
+      data-presets="react,typescript" 
+      src="index.tsx"
+    ></script>
+    <script>
+      // Global error catcher to help debug white screens
+      window.onerror = function(msg, url, lineNo, columnNo, error) {
+        console.error('CRITICAL ERROR:', msg, '\nURL:', url, '\nLine:', lineNo, '\nError:', error);
+        return false;
+      };
+    </script>
   </body>
 </html>

@@ -20,14 +20,13 @@ const App: React.FC = () => {
   const [transImgError, setTransImgError] = useState(false);
 
   useEffect(() => {
-    // Check URL for initial page via search param (most stable for GH Pages)
+    // URL Search parameters are the most stable for any hosting
     const params = new URLSearchParams(window.location.search);
     const pageParam = params.get('page') as Page;
     if (pageParam && Object.values(Page).includes(pageParam)) {
       setCurrentPage(pageParam);
     }
 
-    // Initial app loading delay for branding
     const timer = setTimeout(() => setIsInitializing(false), 1500);
     return () => clearTimeout(timer);
   }, []);
@@ -51,21 +50,19 @@ const App: React.FC = () => {
     
     setIsTransitioning(true);
     
-    // Artificial delay for smooth transition effect
     setTimeout(() => {
       setCurrentPage(page);
       
       try {
-        // Use relative search params only. This is the "magic bullet" for GitHub Pages.
+        // Purely relative query param update
         const newUrl = `?page=${page}`;
         window.history.pushState({}, '', newUrl);
       } catch (e) {
-        console.warn("Navigation: URL update failed, staying on current path.");
+        console.warn("Navigation fallback: URL update skipped.");
       }
 
       window.scrollTo({ top: 0, behavior: 'instant' });
       
-      // End transition after content swap
       setTimeout(() => {
         setIsTransitioning(false);
       }, 300);
@@ -91,7 +88,6 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 selection:bg-red-100 selection:text-red-900">
-      {/* Page Transition Overlay */}
       <div className={`page-transition-overlay ${isTransitioning ? 'active' : ''}`}>
          <div className="text-center px-4 relative flex flex-col items-center">
             <div className="absolute inset-0 bg-red-100/20 blur-3xl rounded-full scale-150 -z-10" />

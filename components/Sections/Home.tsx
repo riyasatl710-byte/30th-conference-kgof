@@ -41,28 +41,33 @@ export const Home: React.FC<HomeProps> = ({ onPageChange }) => {
       <section className="relative w-full min-h-[550px] md:min-h-[650px] overflow-hidden rounded-[2.5rem] shadow-2xl bg-red-950">
         <div className="absolute inset-0">
           {HERO_CAROUSEL_IMAGES.map((img, idx) => {
-            const isLogoSlide = idx === 2; // The 3rd slide is the logo only
+            const isLogoSlide = idx === 2; // The 3rd slide is the logo only centerpiece
             return (
               <div 
                 key={idx}
                 className={`absolute inset-0 transition-opacity duration-1000 ${
                   activeHero === idx ? 'opacity-100' : 'opacity-0'
-                }`}
+                } ${isLogoSlide ? 'bg-red-950' : ''}`}
               >
+                {/* Glow effect for logo-only slide */}
                 {isLogoSlide && (
-                  <div className="absolute inset-0 bg-red-900/20 blur-3xl scale-75 opacity-40 rounded-full flex items-center justify-center" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-red-600/30 blur-[120px] rounded-full animate-pulse" />
+                  </div>
                 )}
                 <img
                   src={img}
                   alt={`Slide ${idx + 1}`}
                   className={`w-full h-full ${
-                    isLogoSlide ? 'object-contain p-16 md:p-32' : 'object-cover opacity-40'
+                    isLogoSlide 
+                      ? 'object-contain p-24 md:p-40 relative z-10 drop-shadow-[0_0_50px_rgba(255,255,255,0.2)]' 
+                      : 'object-cover opacity-40'
                   } transition-transform duration-[6000ms] ${activeHero === idx ? 'scale-110' : 'scale-100'}`}
                 />
               </div>
             );
           })}
-          <div className="absolute inset-0 bg-gradient-to-t from-red-950/90 via-black/10 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-red-950/90 via-black/10 to-transparent pointer-events-none" />
         </div>
 
         <div className="relative h-full z-10 flex items-center p-6 md:p-16">
@@ -165,21 +170,4 @@ export const Home: React.FC<HomeProps> = ({ onPageChange }) => {
            ))}
            <div className="absolute inset-0 bg-red-900/[0.02] pointer-events-none" />
            
-           {ABOUT_CAROUSEL_IMAGES.length > 1 && (
-             <div className="absolute bottom-6 flex space-x-2 z-10">
-               {ABOUT_CAROUSEL_IMAGES.map((_, idx) => (
-                 <button 
-                   key={idx}
-                   onClick={() => setActiveAbout(idx)}
-                   className={`h-1.5 rounded-full transition-all duration-500 shadow-sm ${
-                     activeAbout === idx ? 'w-8 bg-red-600' : 'w-2 bg-gray-300 hover:bg-gray-400'
-                   }`}
-                 />
-               ))}
-             </div>
-           )}
-        </div>
-      </section>
-    </div>
-  );
-};
+           {ABOUT_CAROUSE
