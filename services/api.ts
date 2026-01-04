@@ -10,11 +10,11 @@ export const gasApi = {
       if (!response.ok) throw new Error('Failed to fetch schedule');
       const data = await response.json();
       
-      // Safety check: Ensure the response is an array
-      if (Array.isArray(data)) {
+      // Safety check: If API returns an empty array or isn't an array, use high-quality fallback
+      if (Array.isArray(data) && data.length > 0) {
         return data;
       } else {
-        console.warn('Schedule API did not return an array, using fallback.', data);
+        console.warn('Schedule API returned empty or non-array, using fallback schedule from constants.');
         return MOCK_SCHEDULE;
       }
     } catch (error) {

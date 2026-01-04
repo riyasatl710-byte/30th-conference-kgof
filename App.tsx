@@ -20,13 +20,15 @@ const App: React.FC = () => {
   const [transImgError, setTransImgError] = useState(false);
 
   useEffect(() => {
+    // Check URL for initial page
     const params = new URLSearchParams(window.location.search);
     const pageParam = params.get('page') as Page;
     if (pageParam && Object.values(Page).includes(pageParam)) {
       setCurrentPage(pageParam);
     }
 
-    const timer = setTimeout(() => setIsInitializing(false), 2000);
+    // Initial app loading delay for branding
+    const timer = setTimeout(() => setIsInitializing(false), 1500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -49,12 +51,14 @@ const App: React.FC = () => {
     
     setIsTransitioning(true);
     
+    // Artificial delay for smooth transition effect
     setTimeout(() => {
       setCurrentPage(page);
       
       try {
         const url = new URL(window.location.href);
-        if (!url.protocol.startsWith('blob')) {
+        // Only update history if not in a blob/special environment
+        if (url.protocol.startsWith('http')) {
           url.searchParams.set('page', page);
           window.history.pushState({}, '', url.toString());
         }
@@ -64,6 +68,7 @@ const App: React.FC = () => {
 
       window.scrollTo({ top: 0, behavior: 'instant' });
       
+      // End transition after content swap
       setTimeout(() => {
         setIsTransitioning(false);
       }, 300);
@@ -89,8 +94,9 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 selection:bg-red-100 selection:text-red-900">
+      {/* Page Transition Overlay */}
       <div className={`page-transition-overlay ${isTransitioning ? 'active' : ''}`}>
-         <div className="text-center px-4 relative">
+         <div className="text-center px-4 relative flex flex-col items-center">
             <div className="absolute inset-0 bg-red-100/20 blur-3xl rounded-full scale-150 -z-10" />
             
             <div className="mb-8 flex justify-center">
@@ -98,7 +104,7 @@ const App: React.FC = () => {
                 <img 
                   src={CONFERENCE_INFO.logoUrl} 
                   onError={() => setTransImgError(true)}
-                  className="h-32 md:h-40 w-auto object-contain logo-pop" 
+                  className="h-28 md:h-36 w-auto object-contain logo-pop" 
                   alt="Logo" 
                 />
               ) : (
@@ -109,11 +115,17 @@ const App: React.FC = () => {
             </div>
             
             <div className="flex flex-col items-center">
-              <div className="text-red-800 font-black tracking-[0.2em] text-xs uppercase mb-2">
+              <div className="text-red-800 font-black tracking-[0.2em] text-[10px] uppercase mb-4">
                 Loading...
               </div>
-              <div className="w-32 h-1 bg-gray-100 rounded-full overflow-hidden">
-                <div className="h-full bg-red-600 animate-[loading_1s_ease-in-out_infinite]" style={{ width: '40%' }}></div>
+              <div className="w-32 h-1 bg-gray-100 rounded-full overflow-hidden relative">
+                <div 
+                  className="absolute h-full bg-red-600 rounded-full" 
+                  style={{ 
+                    width: '40%', 
+                    animation: 'loading 1.2s ease-in-out infinite' 
+                  }}
+                ></div>
               </div>
             </div>
          </div>

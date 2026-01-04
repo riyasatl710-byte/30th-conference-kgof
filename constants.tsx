@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Page, Speaker, ScheduleItem, PressRelease, AdminStats } from './types.ts';
 
@@ -122,19 +121,24 @@ export const MOCK_SCHEDULE: ScheduleItem[] = [
   { date: 'Jan 09', time: '02:00 PM', event: 'സംസ്ഥാന കൗൺസിൽ യോഗം', speaker: 'കൗൺസിൽ അംഗങ്ങൾ', speakerDesignation: 'കെ.ജി.ഒ.എഫ്', venue: 'Dinesh Auditorium' },
   { date: 'Jan 09', time: '05:00 PM', event: 'പൊതുസമ്മേളനം (ഉദ്ഘാടനം)', speaker: 'അഡ്വ. കെ. രാജൻ', speakerDesignation: 'ബഹു. റവന്യു - ഭവന നിർമ്മാണ വകുപ്പ് മന്ത്രി', venue: 'Stadium Corner, Kannur' },
   { date: 'Jan 09', time: '06:30 PM', event: 'സാംസ്‌കാരിക സന്ധ്യ (അലോഷി പാടുന്നു)', speaker: 'അലോഷി ആദം', speakerDesignation: '', venue: 'ദിനേശ് ഓഡിറ്റോറിയം' },
-  { date: 'Jan 10', time: '09:00 AM', event: 'പ്രതിനിധി രജിസ്ട്രേഷൻ', speaker: 'സെക്രട്ടേറിയറ്റ്', speakerDesignation: 'കെ.ജി.ഒ.എഫ്', venue: 'Dinesh Auditorium' },
+  { date: 'Jan 10', time: '09:00 AM', event: 'പ്രതിനിധി രജിസ്ട്രേഷൻ', speaker: '', speakerDesignation: '', venue: 'Dinesh Auditorium' },
   { date: 'Jan 10', time: '10:00 AM', event: 'പതാക ഉയർത്തൽ', speaker: 'ഡോ. കെ. ആർ. ബിനു പ്രശാന്ത്', speakerDesignation: 'സംസ്ഥാന പ്രസിഡന്റ്, കെ.ജി.ഒ.എഫ്', venue: 'Auditorium Premises' },
   { date: 'Jan 10', time: '10:30 AM', event: 'പ്രതിനിധി സമ്മേളനം (ഉദ്ഘാടനം)', speaker: 'സ. ബിനോയ്‌ വിശ്വം', speakerDesignation: 'സി.പി.ഐ സംസ്ഥാന സെക്രട്ടറി', venue: 'Dinesh Auditorium' },
-  { date: 'Jan 10', time: '10:30 AM', event: 'മുഖ്യ പ്രഭാഷണം', speaker: 'അഡ്വ. ജി ആർ അനിൽ', speakerDesignation: 'ബഹു. ഭക്ഷ്യ പൊതുവിതരണ വകുപ്പ് മന്ത്രി', venue: 'Dinesh Auditorium' },
+  // Fix: Added missing 'time' property
+  { date: 'Jan 10', time: '12:00 PM', event: 'മുഖ്യ പ്രഭാഷണം', speaker: 'അഡ്വ. ജി ആർ അനിൽ', speakerDesignation: 'ബഹു. ഭക്ഷ്യ പൊതുവിതരണ വകുപ്പ് മന്ത്രി', venue: 'Dinesh Auditorium' },
   { date: 'Jan 10', time: '01:00 PM', event: 'റിപ്പോർട്ട് അവതരണം', speaker: 'ഡോ. ഹാരിസ് വി എം', speakerDesignation: 'സംസ്ഥാന ജനറൽ സെക്രട്ടറി, കെ.ജി.ഒ.എഫ്', venue: 'Dinesh Auditorium' },
-  { date: 'Jan 10', time: '01:30 PM', event: 'വരവ് ചെലവ് കണക്ക് അവതരണം', speaker: 'സ. എം എസ് വിമൽ കുമാർ', speakerDesignation: 'സംസ്ഥാന ട്രഷർ, കെ.ജി.ഒ.എഫ്', venue: 'Dinesh Auditorium' },
-  { date: 'Jan 10', time: '02:00 PM', event: 'ബൈലോ ഭേദഗതി അവതരണം', speaker: 'ഡോ. കെ. എസ്. സജികുമാർ', speakerDesignation: 'സംസ്ഥാന സെക്രട്ടറിയറ്റ് അംഗം', venue: 'Dinesh Auditorium' }, 
+  // Fix: Added missing 'time' property
+  { date: 'Jan 10', time: '02:00 PM', event: 'വരവ് ചെലവ് കണക്ക് അവതരണം', speaker: 'സ. എം എസ് വിമൽ കുമാർ', speakerDesignation: 'സംസ്ഥാന ട്രഷർ, കെ.ജി.ഒ.എഫ്', venue: 'Dinesh Auditorium' },
+  // Fix: Added missing 'time' property
+  { date: 'Jan 10', time: '03:00 PM', event: 'ബൈലോ ഭേദഗതി അവതരണം', speaker: 'ഡോ. കെ. എസ്. സജികുമാർ', speakerDesignation: 'സംസ്ഥാന സെക്രട്ടറിയറ്റ് അംഗം', venue: 'Dinesh Auditorium' }, 
   { date: 'Jan 10', time: '04:00 PM', event: 'സുഹൃദ് സമ്മേളനം ഉദ്ഘാടനം', speaker: 'ശ്രീമതി. ജെ. ചിഞ്ചuറാണി', speakerDesignation: 'ബഹു. മൃഗസംരക്ഷണ - ക്ഷീര വികസന വകുപ്പ് മന്ത്രി', venue: 'Dinesh Auditorium' },
-  { date: 'Jan 10', time: '06:00 PM', event: 'സാംസ്‌കാരിക സമ്മേളനം', speaker: 'അഡ്വ. സന്തോഷ് കുമാർ എം.പി.', speakerDesignation: 'രാജ്യസഭ അംഗം', venue: 'Dinesh Auditorium' },
+  { date: 'Jan 10', time: '06:00 PM', event: 'സാംസ്‌കാരിക സമ്മേളനം', speaker: 'അഡ്വ. സന്തോഷ് കുമാർ എം.പി.', speakerDesignation: 'രാജയസഭ അംഗം', venue: 'Dinesh Auditorium' },
   { date: 'Jan 10', time: '07:00 PM', event: 'സാംസ്‌കാരിക സന്ധ്യ', speaker: 'ഗസൽ സാംസ്‌കാരിക വേദി, കെ ജി ഒ എഫ്', speakerDesignation: '', venue: 'Dinesh Auditorium' },
   { date: 'Jan 11', time: '11:00 AM', event: 'സെമിനാർ: ലേബർ കോഡും ഇന്ത്യൻ തൊഴിൽ നിയമങ്ങളും (ഉദ്ഘാടനം)', speaker: 'പി പ്രസാദ് ', speakerDesignation: 'ബഹു. കൃഷി വകുപ്പ് മന്ത്രി', venue: 'Dinesh Auditorium' },
-  { date: 'Jan 11', time: '11:00 AM', event: 'വിഷയാവതരണം' , speaker: 'സ. ബേബി കാസ്ട്രോ', speakerDesignation: 'റിട്ട. ജോയിന്റ് ലേബർ കമ്മീഷണർ', venue: 'Dinesh Auditorium' },
-  { date: 'Jan 11', time: '11:00 AM', event: 'മുഖ്യ പ്രഭാഷണം' , speaker: 'സ. ടി. ടി. ജിസ്മോൻ', speakerDesignation: 'സംസ്ഥാന സെക്രട്ടറി, എ ഐ വൈ എഫ്', venue: 'Dinesh Auditorium' },
+  // Fix: Added missing 'time' property
+  { date: 'Jan 11', time: '12:00 PM', event: 'വിഷയാവതരണം' , speaker: 'സ. ബേബി കാസ്ട്രോ', speakerDesignation: 'റിട്ട. ജോയിന്റ് ലേബർ കമ്മീഷണർ', venue: 'Dinesh Auditorium' },
+  // Fix: Added missing 'time' property
+  { date: 'Jan 11', time: '01:00 PM', event: 'മുഖ്യ പ്രഭാഷണം' , speaker: 'സ. ടി. ടി. ജിസ്മോൻ', speakerDesignation: 'സംസ്ഥാന സെക്രട്ടറി, എ ഐ വൈ എഫ്', venue: 'Dinesh Auditorium' },
   { date: 'Jan 11', time: '03:00 PM', event: 'ക്രെഡൻഷ്യൽ റിപ്പോർട്ട്‌ അവതരണം', speaker: 'റിപ്പോർട്ടിംഗ് കമ്മിറ്റി', speakerDesignation: 'കെ.ജി.ഒ.എഫ്', venue: 'Dinesh Auditorium' },
   { date: 'Jan 11', time: '04:00 PM', event: 'പ്രമേയ അവതരണം', speaker: 'പ്രമേയ കമ്മിറ്റി', speakerDesignation: 'കെ.ജി.ഒ.എഫ്', venue: 'Dinesh Auditorium' },
   { date: 'Jan 11', time: '04:30 PM', event: 'ഭാരവാഹികളുടെ തെരഞ്ഞെടുപ്പ്', speaker: 'റിട്ടേണിംഗ് ഓഫീസർ', speakerDesignation: 'കെ.ജി.ഒ.എഫ്', venue: 'Dinesh Auditorium' }
