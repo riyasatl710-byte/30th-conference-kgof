@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', '');
   return {
-    base: '/your-repository-name/', // Add this line - replace with your actual repo name
+    base: '/30th-conference-kgof/', // Add this line - replace with your actual repo name
     server: {
       port: 3000,
       host: '0.0.0.0',
