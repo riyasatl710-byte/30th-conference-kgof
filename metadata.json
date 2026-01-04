@@ -1,0 +1,8 @@
+{
+  "name": "State Conference 2026",
+  "description": "A professional 3-day conference SPA featuring registration, schedules, speaker profiles, and a Google Drive-powered gallery.",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ]
+}
